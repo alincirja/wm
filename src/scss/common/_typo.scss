@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap');
+body {
+    font-family: "PT Sans", sans-serif;
+    color: $color_darkGrey;
+}
+
+a {
+    color: $color_primary;
+    text-decoration: none;
+
+    &:hover {
+        color: $color_accent;
+    }
+}
+
+button,
+a,
+input[type=submit] {
+    cursor: pointer;
+    outline: none;
+}
+
+::placeholder {
+    color: rgba($color_darkGrey, .4);
+}

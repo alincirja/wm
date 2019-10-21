@@ -1,0 +1,49 @@
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color_primary;
+    min-height: 100vh;
+    padding: 20vh 25px 15px;
+
+    .logo {
+        max-width: 120px;
+        background-color: rgba(white, .25);
+        padding: 25px;
+        border-radius: 50%;
+        margin: 0 0 50px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    input {
+        width: 100%;
+        padding: 15px 15px;
+        border: 1px solid transparent;
+        box-shadow: 1px 1px 1px rgba(black, .25);
+        margin: 0 0 20px;
+
+        &.invalid {
+            border-color: $color_danger;
+        }
+
+        &.valid {
+            border-color: $color_valid;
+        }
+    }
+
+    button {
+        padding: 18px;
+        width: 100%;
+        border: none;
+        background-color: $color_brown;
+        color: white;
+        line-height: 1;
+        font-size: 14px;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 2px rgba(black, .25);
+        border-radius: 35px;
+    }
+}
