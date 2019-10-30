@@ -12,7 +12,7 @@ const Menu = props => {
             title: "Invitati"
         },
         {
-            link: "/todos",
+            link: "/todo",
             title: "De facut"
         },
         {

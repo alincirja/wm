@@ -1,9 +1,12 @@
 import React from "react";
+import Header from "../common/Header";
 
 const Admin = props => {
 
     return (
-        <h1>Admin</h1>
+        <div className="container container-admin">
+            <Header screenTitle="Administrare" />
+        </div>
     );
 };
 

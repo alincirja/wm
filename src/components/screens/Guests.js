@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import Header from "../common/Header";
-import AddNew from "../guest/AddNew";
+import Form from "../guest/Form";
 import { GuestContext } from "../../context/Guest";
 import Guest from "../guest/Guest";
 import Menu from "../guest/Menu";
 import Filter from "../guest/Filter";
 
-const Guests = props => {
+const Guests = () => {
     const { guests } = useContext(GuestContext);
-    const [showAddForm, setShowAddForm] = useState(false);
+    const [showForm, setShowForm] = useState(false);
     const [guestsToShow, setGuestsToShow] = useState(guests);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedGuest, setSelectedGuest] = useState(null);
@@ -33,7 +33,7 @@ const Guests = props => {
             <Header screenTitle="Invitati" />
             <div className="actions">
                 <input type="search" onChange={e => setSearchTerm(e.target.value)} placeholder="Nume sau telefon" />
-                <button onClick={() => setShowAddForm(true)}>+ Invitat</button>
+                <button onClick={() => setShowForm(true)}>+ Invitat</button>
             </div>
 
             <div className="guest-list">
@@ -51,8 +51,8 @@ const Guests = props => {
                 setFilterCriteria={setFilterCriteria}
             />
 
-            <Menu selectedGuest={selectedGuest} setSelectedGuest={setSelectedGuest} />
-            <AddNew show={showAddForm} setShow={setShowAddForm} />
+            <Menu selectedGuest={selectedGuest} setSelectedGuest={setSelectedGuest} setShowForm={setShowForm} />
+            <Form show={showForm} setShow={setShowForm} selectedGuest={selectedGuest} setSelectedGuest={setSelectedGuest} />
         </div>
     );
 };

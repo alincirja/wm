@@ -30,7 +30,6 @@ const rsvp = [
 ];
 
 const Menu = props => {
-
     const updateStatus = e => {
         const newStatus = e.target.value;
         const guestId = props.selectedGuest.key;
@@ -42,17 +41,22 @@ const Menu = props => {
         }).catch(err => {
             alert(err.message);
             console.log(err);
-        })
+        });
     };
 
     const deleteGuest = () => {
         if (props.selectedGuest !== null) {
-            firestore.collection("guests").doc(props.selectedGuest.key).delete().then(() => {
-                props.setSelectedGuest(null);
-            }).catch(err => {
-                alert(err.message);
-                console.log(err);
-            })
+            const confirmDelete = window.confirm("Esti sigur ca vrei sa stergi pe " + props.selectedGuest.name + "?");
+            if (confirmDelete) {
+                firestore.collection("guests").doc(props.selectedGuest.key).delete().then(() => {
+                    props.setSelectedGuest(null);
+                }).catch(err => {
+                    alert(err.message);
+                    console.log(err);
+                });
+            } else {
+                return;
+            }
         }
     };
 
@@ -69,7 +73,7 @@ const Menu = props => {
                 </ul>
 
                 <div className="more">
-                <div className="edit" onClick={() => {}}>Editare</div>
+                    <div className="edit" onClick={() => props.setShowForm(true)}>Editare</div>
                     <div className="delete" onClick={deleteGuest}>Sterge</div>
                 </div>
                 <div className="cancel" onClick={() => props.setSelectedGuest(null)}>Inchide</div>

@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as appConstants from "../../constants";
 import { firestore } from "../../base";
 
-const AddNew = props => {
-    const newGuestBlank = {
-        name: "",
-        phone: "",
-        personsCount: "",
-        rsvp: ""
-    };
+const blankGuest = {
+    name: "",
+    phone: "",
+    personsCount: "",
+    rsvp: "",
+    comment: "",
+    money: 0
+};
 
-    const [newGuest, setNewGuest] = useState({...newGuestBlank});
+const Form = props => {
+    const { selectedGuest } = props;
+    const [newGuest, setNewGuest] = useState(blankGuest);
+
+    useEffect(() => {
+        if (selectedGuest) {
+            const {key, ...guest} = selectedGuest;
+            setNewGuest(guest);
+        } else {
+            setNewGuest(blankGuest);
+        }
+    }, [selectedGuest]);
 
     const handleChange = e => {
         e.persist();
@@ -25,12 +37,22 @@ const AddNew = props => {
         if (newGuest.name.trim() === "") {
             alert("Numele este necesar");
         } else {
-            firestore.collection("guests").add(newGuest).then(docRef => {
-                setNewGuest(newGuestBlank);
-            }).catch(err => {
-                alert("Eroare: " + err.message);
-                console.log(err);
-            })
+            if (selectedGuest) {
+                firestore.collection("guests").doc(selectedGuest.key).set(newGuest).then(() => {
+                    props.setSelectedGuest(null);
+                    props.setShow(false);
+                }).catch(err => {
+                    alert(err.message);
+                    console.log(err);
+                });
+            } else {
+                firestore.collection("guests").add(newGuest).then(docRef => {
+                    setNewGuest(blankGuest);
+                }).catch(err => {
+                    alert("Eroare: " + err.message);
+                    console.log(err);
+                })
+            }
         }
     }
 
@@ -52,7 +74,9 @@ const AddNew = props => {
                     <option value={appConstants.RSVP_CANCELED}>Anulat</option>
                     <option value={appConstants.RSVP_ARRIVED}>Venit</option>
                 </select>
-                <button type="submit">Adaugare</button>
+                <label>Comentariu</label>
+                <textarea type="text" name="comment" value={newGuest.comment} className="fc-guest" placeholder="Comentariu" onChange={handleChange} />
+                <button type="submit">Salvare</button>
 
                 <div className="cancel" onClick={() => props.setShow(false)}>Anulare</div>
             </form>
@@ -60,4 +84,4 @@ const AddNew = props => {
     );
 };
 
-export default AddNew;
+export default Form;

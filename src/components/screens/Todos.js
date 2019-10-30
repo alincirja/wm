@@ -1,9 +1,12 @@
 import React from "react";
+import Header from "../common/Header";
 
 const Todos = props => {
 
     return (
-        <h1>Todos</h1>
+        <div className="container container-todo">
+            <Header screenTitle="De facut" />
+        </div>
     );
 };
 
