@@ -30,7 +30,7 @@ const MoneyForm = props => {
                 e.preventDefault();
                 inputEl.current.blur();
             }}>
-                <input type="text" ref={inputEl} pattern="\d*" value={newMoney} onChange={e => setNewMoney(e.target.value)} onBlur={saveMoney} />
+                <input type="text" ref={inputEl} pattern="\d*" inputMode="numeric" value={newMoney} onChange={e => setNewMoney(e.target.value)} onBlur={saveMoney} />
             </form>
         </div>
     );
