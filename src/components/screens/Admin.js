@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../common/Header";
+import ScreenDecorator from "./ScreenDecorator";
 
 const Admin = props => {
 
     return (
-        <div className="container container-admin">
-            <Header screenTitle="Administrare" />
-        </div>
+        <ScreenDecorator>
+        
+        </ScreenDecorator>
     );
 };
 

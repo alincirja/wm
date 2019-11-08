@@ -1,9 +1,12 @@
 import React from "react";
+import ScreenDecorator from "./ScreenDecorator";
 
 const TheirProfile = props => {
 
     return (
-        <h1>TheirProfile</h1>
+        <ScreenDecorator>
+            <h1>Their Profile</h1>
+        </ScreenDecorator>
     );
 };
 

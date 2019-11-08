@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../common/Header";
+import ScreenDecorator from "./ScreenDecorator";
 
 const Dashboard = props => {
 
     return (
-        <div className="container container-dashboard">
-            <Header screenTitle="Dashboard" />
-        </div>
+        <ScreenDecorator>
+            bla
+        </ScreenDecorator>
     );
 };
 

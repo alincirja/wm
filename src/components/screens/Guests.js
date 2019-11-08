@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import Header from "../common/Header";
+import ScreenDecorator from "./ScreenDecorator";
 import Form from "../guest/Form";
 import { GuestContext } from "../../context/Guest";
 import Guest from "../guest/Guest";
@@ -29,8 +29,7 @@ const Guests = () => {
     }, [guests, searchTerm, filterCriteria]);
 
     return (
-        <div className="container container-guests">
-            <Header screenTitle="Invitati" />
+        <ScreenDecorator>
             <div className="actions">
                 <input type="search" onChange={e => setSearchTerm(e.target.value)} placeholder="Nume sau telefon" />
                 <button onClick={() => setShowForm(true)}>+ Invitat</button>
@@ -53,7 +52,7 @@ const Guests = () => {
 
             <Menu selectedGuest={selectedGuest} setSelectedGuest={setSelectedGuest} setShowForm={setShowForm} />
             <Form show={showForm} setShow={setShowForm} selectedGuest={selectedGuest} setSelectedGuest={setSelectedGuest} />
-        </div>
+        </ScreenDecorator>
     );
 };
 

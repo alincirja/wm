@@ -4,6 +4,7 @@ import Login from "./components/auth/Login";
 import SignUp from './components/auth/SignUp';
 import { AuthProvider } from './context/Auth';
 import { GuestProvider } from './context/Guest';
+import { CostsProvider } from './context/Costs';
 import PrivateRoute from "./components/PrivateRoute";
 import { isInitialized } from "./base";
 import Spinner from './components/ui/Spinner';
@@ -12,6 +13,7 @@ import Guests from './components/screens/Guests';
 import Todos from './components/screens/Todos';
 import MyProfile from './components/screens/MyProfile';
 import Admin from './components/screens/Admin';
+import Budget from './components/screens/Budget';
 
 const App = () => {
     const [fireInit, setFireInit] = useState(false);
@@ -29,6 +31,9 @@ const App = () => {
                         <PrivateRoute exact path="/" component={Dashboard} />
                         <PrivateRoute exact path="/guests" component={Guests} />
                     </GuestProvider>
+                    <CostsProvider>
+                        <PrivateRoute exact path="/budget" component={Budget} />
+                    </CostsProvider>
                     <PrivateRoute exact path="/todo" component={Todos} />
                     <PrivateRoute exact path="/profile" component={MyProfile} />
                     <PrivateRoute exact path="/admin" component={Admin} />

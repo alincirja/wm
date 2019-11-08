@@ -5,7 +5,7 @@
     width: 100%;
     background-image: linear-gradient(-45deg, $color_primary, $color_accent);
     color: $color_lightGrey;
-    padding: 12px 20px;
+    padding: 3px 20px;
 
     &_container {
         display: flex;
@@ -18,7 +18,7 @@
             display: block;
             border: none;
             background-color: transparent;
-            padding: 0;
+            padding: 10px 0;
             color: $color_lightGrey;
             font-size: 11px;
             outline: none;
@@ -30,7 +30,7 @@
             width: 25px;
             border: none;
             background-color: transparent;
-            padding: 0;
+            padding: 10px 0;
             display: block;
             outline: none;
 
@@ -69,7 +69,7 @@
     width: 100vw;
     left: -100vw;
     display: flex;
-    transition: all .3s linear;
+    transition: all .3s ease-in-out;
 
     &.show {
         left: 0;

@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../common/Header";
+import ScreenDecorator from "./ScreenDecorator";
 
 const Todos = props => {
 
     return (
-        <div className="container container-todo">
-            <Header screenTitle="De facut" />
-        </div>
+        <ScreenDecorator>
+
+        </ScreenDecorator>
     );
 };
 
